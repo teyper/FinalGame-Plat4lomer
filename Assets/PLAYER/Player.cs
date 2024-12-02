@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 
     Animator animator;
     SpriteRenderer spriteRenderer;
-    Rigidbody2D rigidbody2D;
+    Rigidbody2D Rbody;
 
     bool Ground = true;
 
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        Rbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
 
         if (!Ground)
         { x = x * 0.5f; }
-        rigidbody2D.velocity = new Vector3(Speed * x, rigidbody2D.velocity.y, 0f);
+        Rbody.velocity = new Vector3(Speed * x, Rbody.velocity.y, 0f);
 
 
         //transform.Translate(0f, y * Speed * Time.deltaTime, 0f);
@@ -49,11 +49,11 @@ public class Player : MonoBehaviour
 
         //jumping
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && Ground)
+        if (Input.GetKeyDown(KeyCode.UpArrow) /*&& Ground*/)
         {
             //jump
             animator.SetBool("jump", true);
-            rigidbody2D.AddForce(jumpF * Vector3.up);
+            Rbody.AddForce(jumpF * Vector3.up);
             Ground = false;
             Debug.Log("yes");
         }
