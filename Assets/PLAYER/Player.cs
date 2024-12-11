@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] float Speed = 2f;
     [SerializeField] float jumpF = 50f;
     [SerializeField] float ControlSensX = 0.05f;
-  //  [SerializeField] float ControlSensY = 0.3f;
+    //  [SerializeField] float ControlSensY = 0.3f;
 
 
 
@@ -18,8 +18,9 @@ public class Player : MonoBehaviour
     Rigidbody2D Rbody;
 
     bool Ground = true;
+   // bool air = true;
 
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,10 +50,11 @@ public class Player : MonoBehaviour
 
         //jumping
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) /*&& Ground*/)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && Ground)
         {
             //jump
-            animator.SetBool("jump", true);
+            animator.SetBool("walk", false);
+           // air = true;
             Rbody.AddForce(jumpF * Vector3.up);
             Ground = false;
             Debug.Log("yes");
@@ -73,32 +75,38 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             //runs when up arrow is presssed
-            animator.SetBool("walk", true);
+            if (Ground == true)
+            { 
+                animator.SetBool("walk", true);
+        }
             spriteRenderer.flipX = false;
             //laserDirection = Vector3.right;
         }
-        if (Input.GetKeyUp(KeyCode.RightArrow))
+       /* if (Input.GetKeyUp(KeyCode.RightArrow))
         {
             //runs when up arrow is released
             animator.SetBool("walk", false);
             spriteRenderer.flipX = false;
-        }
+        }*/
 
         //walk left 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             //runs when up arrow is presssed
-            animator.SetBool("walk", true);
+            if (Ground == true)
+            {
+                animator.SetBool("walk", true);
+            }
             spriteRenderer.flipX = true;
             //laserDirection = Vector3.left;
         }
-        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        /*if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
             //runs when up arrow is released
             animator.SetBool("walk", false);
-            animator.SetBool("idle", true);
+           // animator.SetBool("idle", true);
             spriteRenderer.flipX = true;
-        }
+        }*/
 
         if (x < -ControlSensX)
         {
@@ -129,7 +137,8 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "ground")
         {
             Ground = true;
-            animator.SetBool("jump", false);
+            animator.SetBool("walk", true);
+            
         }
     }
 
@@ -138,7 +147,8 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "ground")
         {
             //OnGround = false;
-            animator.SetBool("jump", true);
+            animator.SetBool("walk", false);
+            
         }
     }
 
