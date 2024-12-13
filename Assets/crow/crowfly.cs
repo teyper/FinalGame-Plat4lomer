@@ -59,7 +59,7 @@ public class crowfly : MonoBehaviour
         if (transform.position.x < Left)
         {
             transform.position = new Vector3(Right, transform.position.y, transform.position.z);
-            spriteRenderer.flipX = false;
+            //spriteRenderer.flipX = false;
         }
         // past right --> Wrap to left
         if (transform.position.x > Right)

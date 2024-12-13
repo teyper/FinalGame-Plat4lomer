@@ -108,6 +108,20 @@ public class Player : MonoBehaviour
             spriteRenderer.flipX = true;
         }*/
 
+        //attack
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            //runs when up arrow is presssed
+
+            animator.SetBool("attack", true);
+            spriteRenderer.flipX = true;
+
+        }
+
+            //spriteRenderer.flipX = false;
+            //laserDirection = Vector3.right;
+        
+
         if (x < -ControlSensX)
         {
             spriteRenderer.flipX = true;
