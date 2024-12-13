@@ -6,49 +6,69 @@ public class zommieGUY : MonoBehaviour
 {
     bool idle;
     bool run;
-    bool attack;
+//    bool attack;
 
     Animator animator;
     AudioSource audioS;
-    // peanut
+    
     GameManager gameManager;
+   [SerializeField] float speed = 0.2f;
+    GameObject Player;
+    SpriteRenderer spriteR;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        run = GameObject.FindWithTag("moon");
-        attack = true; //assume moon is found
+        //run = GameObject.FindWithTag("moon");
+        //idle = true; 
+        //attack = true; //assume moon is found
         animator = GetComponent<Animator>();
-        gameManager = FindObjectOfType<GameManager>();
+        animator.SetBool("idle", true);
+        spriteR = GetComponent<SpriteRenderer>();
+       // gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //activate animations based on distance from player 
+        //Vector2.Distance(3f, 1f);
+        transform.position = Vector2.Lerp(transform.position, Player.transform.position, speed * Time.deltaTime);
 
+        //if(transform.position)
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log()
-        //check to see if we hit moon
+        //check to see if player is near by
+
+       // if(animator.SetBool("idle", true))
+
         if (collision.gameObject.tag == "moon")
         {
-            //do nothing  if alr on a moon
-            if (idle == true) return;
+            //activate animations based on distance from player 
+            //Vector2.Distance(3f, 1f);
+
+            //do nothing  if no player 
+            if (idle == false) //return;
+
             //audioSource = GetComponent<AudioSource>();
             //audioSource.Play();
 
             run = collision.gameObject;
-            attack = true;
+            //attack = false;
+
             //gameManager.LandedOnMoon();
             //audioSource = GetComponent<AudioSource>();
             //audioSource.Play();
 
         }
-        if (collision.gameObject.tag == "asteroid")
+        if (collision.gameObject.tag == "player")
         {
-            if (idle == false) //only happens if youre flying 
+            if (idle == false) //only happens if player is close by 
             {
                 animator.SetBool("attack", true);
                 Destroy(gameObject, 1f);
@@ -56,5 +76,6 @@ public class zommieGUY : MonoBehaviour
                 audioS.Play();
             }
         }
+
     }
 }

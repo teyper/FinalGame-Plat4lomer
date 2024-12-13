@@ -114,8 +114,8 @@ public class Player : MonoBehaviour
             //runs when up arrow is presssed
 
             animator.SetBool("attack", true);
-            spriteRenderer.flipX = true;
-
+            
+            
         }
 
             //spriteRenderer.flipX = false;
