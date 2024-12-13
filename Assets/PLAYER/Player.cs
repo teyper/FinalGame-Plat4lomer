@@ -111,11 +111,17 @@ public class Player : MonoBehaviour
         //attack
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            //runs when up arrow is presssed
+            //attacks when space key is pressed
 
             animator.SetBool("attack", true);
             
             
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            animator.SetBool("attack", false); // return to idle
+            //animator.SetBool("walk",false);
         }
 
             //spriteRenderer.flipX = false;
@@ -150,7 +156,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "ground")
         {
-            Ground = true;
+            Ground = true;// while on the ground
             animator.SetBool("walk", true);
             
         }

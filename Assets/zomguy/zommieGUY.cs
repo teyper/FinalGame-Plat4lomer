@@ -4,78 +4,78 @@ using UnityEngine;
 
 public class zommieGUY : MonoBehaviour
 {
-    bool idle;
-    bool run;
-//    bool attack;
-
     Animator animator;
-    AudioSource audioS;
-    
-    GameManager gameManager;
-   [SerializeField] float speed = 0.2f;
-    GameObject Player;
+    [SerializeField] GameObject player;
     SpriteRenderer spriteR;
 
+    [SerializeField] float chaseDistance = 3f; // Distance to start chasing the player
+    [SerializeField] float attackDistance = 1f; // Distance to start attacking the player
+    [SerializeField] float moveSpeed = 2f; // Speed of the NPC movement
 
+    private bool isAttacking = false;
 
-    // Start is called before the first frame update
     void Start()
     {
-        //run = GameObject.FindWithTag("moon");
-        //idle = true; 
-        //attack = true; //assume moon is found
         animator = GetComponent<Animator>();
-        animator.SetBool("idle", true);
         spriteR = GetComponent<SpriteRenderer>();
-       // gameManager = FindObjectOfType<GameManager>();
+        animator.SetBool("idle", true); // NPC starts idle
+        Debug.Log("NPC initialized and set to idle state.");
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //activate animations based on distance from player 
-        //Vector2.Distance(3f, 1f);
-        transform.position = Vector2.Lerp(transform.position, Player.transform.position, speed * Time.deltaTime);
+        float distance = Vector3.Distance(transform.position, player.transform.position);
+        Debug.Log($"Distance to player: {distance}");
 
-        //if(transform.position)
+        if (distance <= attackDistance && !isAttacking) // Start attacking when close enough
+        {
+            Debug.Log("Player is within attack distance. Starting attack.");
+            animator.SetBool("run", false); // Stop running
+            animator.SetBool("attack", true); // Start attacking
+            isAttacking = true; // Prevent redundant attacks
+        }
+        else if (distance <= chaseDistance && distance > attackDistance) // Start chasing when within chaseDistance
+        {
+            Debug.Log("Player is within chase distance but outside attack range. Chasing player.");
+            animator.SetBool("idle", false); // Stop idling
+            animator.SetBool("run", true); // Start running
+            animator.SetBool("attack", false); // Stop attacking
+            isAttacking = false; // Ready to attack when in range
+
+            // Move toward the player
+            Vector3 direction = (player.transform.position - transform.position).normalized;
+            transform.position += direction * moveSpeed * Time.deltaTime;
+
+            // Flip sprite based on direction
+            spriteR.flipX = direction.x < 0;
+        }
+        else // Idle when the player is out of range
+        {
+            Debug.Log("Player is out of range. Return to idle state.");
+            animator.SetBool("idle", true);
+            animator.SetBool("run", false);
+            animator.SetBool("attack", false);
+            isAttacking = false;
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        //Debug.Log()
-        //check to see if player is near by
-
-       // if(animator.SetBool("idle", true))
-
-        if (collision.gameObject.tag == "moon")
+        if (col.gameObject.CompareTag("Player"))
         {
-            //activate animations based on distance from player 
-            //Vector2.Distance(3f, 1f);
-
-            //do nothing  if no player 
-            if (idle == false) //return;
-
-            //audioSource = GetComponent<AudioSource>();
-            //audioSource.Play();
-
-            run = collision.gameObject;
-            //attack = false;
-
-            //gameManager.LandedOnMoon();
-            //audioSource = GetComponent<AudioSource>();
-            //audioSource.Play();
-
+            Debug.Log("Player entered the trigger zone. zom starts running.");
+            animator.SetBool("idle", false); // Stop idling
+            animator.SetBool("run", true); // Start running
         }
-        if (collision.gameObject.tag == "player")
+    }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
         {
-            if (idle == false) //only happens if player is close by 
-            {
-                animator.SetBool("attack", true);
-                Destroy(gameObject, 1f);
-                audioS = GetComponent<AudioSource>();
-                audioS.Play();
-            }
+            Debug.Log("Player exited the trigger zone. NPC returns to idle state.");
+            animator.SetBool("idle", true); // Return to idle
+            animator.SetBool("run", false); // Stop running
         }
-
     }
 }

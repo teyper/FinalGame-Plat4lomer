@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 268523878541972295}
   - component: {fileID: 4669805498400047364}
   - component: {fileID: 2472731709375133957}
+  - component: {fileID: 8037403171221937466}
   m_Layer: 0
   m_Name: RoundPlat
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 34.99895, y: 34.635036, z: 0.445655}
-  m_LocalScale: {x: 2.64, y: 2.64, z: 2.64}
+  m_LocalScale: {x: 0.17, y: 0.17, z: 0.17}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 645400427
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1000553326, guid: 67f551b83353e4a0faf604494535e1cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9286eaa5a40bd4426b0280b27d176c9d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -92,10 +93,23 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5961938786174998297}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d8fa8debdcf54b18b759c86e599b51a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 2
   XLimit: 3.5
+--- !u!114 &8037403171221937466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5961938786174998297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4536b03a2025543e293a9c21cf550e94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 10

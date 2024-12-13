@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a2a8efb77fb7540ffa285f6af4808038
+guid: f5a17da2b652c4f44a0adfd6ed8afece
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: zommie-removebg-preview_0
+      name: steam-removebg_0
       rect:
         serializedVersion: 2
-        x: 105
-        y: 338
-        width: 19
-        height: 45
+        x: 0
+        y: 82
+        width: 716
+        height: 942
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6419d0f6dd53b4b60acf7a6188a3e2fa
-      internalID: 1816308003
+      spriteID: e6b779b8c77b04b81a6e42b7cb35cd43
+      internalID: -612067749
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zommie-removebg-preview_1
+      name: steam-removebg_1
       rect:
         serializedVersion: 2
-        x: 168
-        y: 338
-        width: 21
-        height: 45
+        x: 713
+        y: 755
+        width: 311
+        height: 197
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e27eaf1ccb424d769d2d805372c2b8b
-      internalID: -134497140
+      spriteID: 4022bbab481a64f348dbfdac450cd7f2
+      internalID: 518566832
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zommie-removebg-preview_2
+      name: steam-removebg_2
       rect:
         serializedVersion: 2
-        x: 234
-        y: 338
-        width: 21
-        height: 45
+        x: 730
+        y: 519
+        width: 294
+        height: 173
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 362199701281f4a6b81a38616a0c8c4f
-      internalID: 1105752199
+      spriteID: dbe89b259aeff43ae9777c7f5e3ab67b
+      internalID: -636626061
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zommie-removebg-preview_3
+      name: steam-removebg_3
       rect:
         serializedVersion: 2
-        x: 299
-        y: 338
-        width: 21
-        height: 45
+        x: 731
+        y: 339
+        width: 293
+        height: 148
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef4a9fea830564de8a662e894225350b
-      internalID: -1793688014
+      spriteID: 4c0406c048bce41c6be987611a63fffa
+      internalID: 1323608815
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zommie-removebg-preview_4
+      name: steam-removebg_4
       rect:
         serializedVersion: 2
-        x: 366
-        y: 338
-        width: 19
-        height: 45
+        x: 731
+        y: 81
+        width: 293
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 94b08e4b22f4a4282a706f53bf3d6bb2
-      internalID: -920655602
+      spriteID: 1fd1c0ac3436249d4878575e9f1781ed
+      internalID: 119716099
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zommie-removebg-preview_5
+      name: steam-removebg_5
       rect:
         serializedVersion: 2
-        x: 432
-        y: 338
-        width: 19
-        height: 45
+        x: 0
+        y: 0
+        width: 45
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f41faf82dea94a44945cfa8b09c30c7
-      internalID: -1008284736
+      spriteID: bc6ac4436b99f48429ad5f689e8fdbf1
+      internalID: -512116830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zommie-removebg-preview_6
+      name: steam-removebg_6
       rect:
         serializedVersion: 2
-        x: 498
-        y: 338
-        width: 18
-        height: 45
+        x: 58
+        y: 0
+        width: 65
+        height: 52
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,250 +250,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb8cfa7a7f2b8473383813132d9af040
-      internalID: 766655933
+      spriteID: eaab8f614021d49a6b47b699a80a1dea
+      internalID: 304791014
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zommie-removebg-preview_7
+      name: steam-removebg_7
       rect:
         serializedVersion: 2
-        x: 563
-        y: 338
-        width: 18
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 86078f9492cec4cdb9a0fb6a35f19ef0
-      internalID: -439336659
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zommie-removebg-preview_8
-      rect:
-        serializedVersion: 2
-        x: 103
-        y: 184
-        width: 25
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e06f237a07fbc418f896210e3aa16684
-      internalID: -557970258
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zommie-removebg-preview_9
-      rect:
-        serializedVersion: 2
-        x: 168
-        y: 184
-        width: 32
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2d625ee5c530a403ba4430d7e4f19d69
-      internalID: 455163935
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zommie-removebg-preview_10
-      rect:
-        serializedVersion: 2
-        x: 227
-        y: 184
-        width: 40
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dcb156a790eb847d986c1d90acc4d012
-      internalID: -723358561
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zommie-removebg-preview_11
-      rect:
-        serializedVersion: 2
-        x: 295
-        y: 184
-        width: 42
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 83068495978414cbd83f682aa5895f74
-      internalID: -362973702
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zommie-removebg-preview_12
-      rect:
-        serializedVersion: 2
-        x: 366
-        y: 185
-        width: 38
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 46e347cbcb8dc4708acd7c5d10beb049
-      internalID: 767764897
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zommie-removebg-preview_13
-      rect:
-        serializedVersion: 2
-        x: 428
-        y: 184
-        width: 38
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2456345129e4f4577be3adb822012cd6
-      internalID: 1898043313
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zommie-removebg-preview_14
-      rect:
-        serializedVersion: 2
-        x: 490
-        y: 184
-        width: 43
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3421600976ac840b1965da04eea3e4d9
-      internalID: -783397965
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zommie-removebg-preview_15
-      rect:
-        serializedVersion: 2
-        x: 558
-        y: 184
-        width: 29
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5f2fb258ce88a41cf86b1ce5ebad9701
-      internalID: 1551509312
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zommie-removebg-preview_16
-      rect:
-        serializedVersion: 2
-        x: 99
-        y: 40
-        width: 28
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4d7808f54788a4458a7154737ccca1f6
-      internalID: -231613249
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zommie-removebg-preview_17
-      rect:
-        serializedVersion: 2
-        x: 164
-        y: 40
-        width: 35
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 32e015c38377a497eb6732ba81a1f75f
-      internalID: -1353100687
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: zommie-removebg-preview_18
-      rect:
-        serializedVersion: 2
-        x: 232
-        y: 40
-        width: 31
+        x: 136
+        y: 0
+        width: 65
         height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -502,20 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63311a734efd447a69ef36185e859b5d
-      internalID: -1715742511
+      spriteID: 2563dae02d4ec4a72aa3b9b94f454c3c
+      internalID: 184702982
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zommie-removebg-preview_19
+      name: steam-removebg_8
       rect:
         serializedVersion: 2
-        x: 298
-        y: 40
-        width: 41
-        height: 44
+        x: 213
+        y: 0
+        width: 64
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -523,20 +292,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08632f559788a491fa978a7d9086cca0
-      internalID: 849148171
+      spriteID: a561e390ab7e34f63a153f34f8a3f647
+      internalID: -1959554912
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zommie-removebg-preview_20
+      name: steam-removebg_9
       rect:
         serializedVersion: 2
-        x: 364
-        y: 40
-        width: 28
-        height: 44
+        x: 286
+        y: 0
+        width: 71
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -544,8 +313,218 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba6e415fe2c77429caf535e807473ed9
-      internalID: -2119728547
+      spriteID: 9139ffc91a36e47088971f552a5820ba
+      internalID: -1764651954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: steam-removebg_10
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 0
+        width: 58
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fcbb4a3474264e28a34c6963e6e0f76
+      internalID: 443178447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: steam-removebg_11
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 0
+        width: 69
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8eddf4ff2dc2e4033a9ba50f4c8cf5a5
+      internalID: 792168057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: steam-removebg_12
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 0
+        width: 58
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fef3fdd1249ad48289c777cdd33ef650
+      internalID: -1368192436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: steam-removebg_13
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 0
+        width: 58
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a04a73be4ea894ae088a166e49e4dd56
+      internalID: 1126916674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: steam-removebg_14
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 0
+        width: 53
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e7cea5f36e644d4b92824875caf8a50
+      internalID: 804833542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: steam-removebg_15
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 0
+        width: 50
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c1f198c56ed64d5ea20f4e73c6efdaa
+      internalID: -52333007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: steam-removebg_16
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 0
+        width: 57
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec260530633f448b0acba0b670e82228
+      internalID: 141733479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: steam-removebg_17
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 0
+        width: 58
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4b0a2776389c4157a0feaa7778be1e8
+      internalID: -987741236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: steam-removebg_18
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 0
+        width: 69
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dabc4d9b1b6ff493ab15c13e36f2fa32
+      internalID: -1233435687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: steam-removebg_19
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 24
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4fb9805b4c6c4032af7af976ce4b1fd
+      internalID: 2007636537
       vertices: []
       indices: 
       edges: []
@@ -561,27 +540,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      zommie-removebg-preview_0: 1816308003
-      zommie-removebg-preview_1: -134497140
-      zommie-removebg-preview_10: -723358561
-      zommie-removebg-preview_11: -362973702
-      zommie-removebg-preview_12: 767764897
-      zommie-removebg-preview_13: 1898043313
-      zommie-removebg-preview_14: -783397965
-      zommie-removebg-preview_15: 1551509312
-      zommie-removebg-preview_16: -231613249
-      zommie-removebg-preview_17: -1353100687
-      zommie-removebg-preview_18: -1715742511
-      zommie-removebg-preview_19: 849148171
-      zommie-removebg-preview_2: 1105752199
-      zommie-removebg-preview_20: -2119728547
-      zommie-removebg-preview_3: -1793688014
-      zommie-removebg-preview_4: -920655602
-      zommie-removebg-preview_5: -1008284736
-      zommie-removebg-preview_6: 766655933
-      zommie-removebg-preview_7: -439336659
-      zommie-removebg-preview_8: -557970258
-      zommie-removebg-preview_9: 455163935
+      steam-removebg_0: -612067749
+      steam-removebg_1: 518566832
+      steam-removebg_10: 443178447
+      steam-removebg_11: 792168057
+      steam-removebg_12: -1368192436
+      steam-removebg_13: 1126916674
+      steam-removebg_14: 804833542
+      steam-removebg_15: -52333007
+      steam-removebg_16: 141733479
+      steam-removebg_17: -987741236
+      steam-removebg_18: -1233435687
+      steam-removebg_19: 2007636537
+      steam-removebg_2: -636626061
+      steam-removebg_3: 1323608815
+      steam-removebg_4: 119716099
+      steam-removebg_5: -512116830
+      steam-removebg_6: 304791014
+      steam-removebg_7: 184702982
+      steam-removebg_8: -1959554912
+      steam-removebg_9: -1764651954
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
