@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class zommieGUY : MonoBehaviour
+public class zommieGUY : MonoBehaviour 
 {
     Animator animator;
     [SerializeField] GameObject player;
@@ -13,6 +13,27 @@ public class zommieGUY : MonoBehaviour
     [SerializeField] float moveSpeed = 2f; // Speed of the NPC movement
 
     private bool isAttacking = false;
+
+    [SerializeField] private int health = 8; // NPC health
+    [SerializeField] private int damage = 2; // damage intervals
+
+    public void TakeDamage(int damage) // Implementing IDamageable
+    {
+        health -= damage; // Reduce health by damage value
+        Debug.Log($"NPC took {damage} damage. Remaining health: {health}");
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("NPC is destroyed.");
+        animator.SetTrigger("die"); // Play death animation
+        Destroy(gameObject, 1f); // Destroy object after 1 second to allow animation to play
+    }
 
     void Start()
     {
@@ -25,17 +46,18 @@ public class zommieGUY : MonoBehaviour
     void Update()
     {
         float distance = Vector3.Distance(transform.position, player.transform.position);
-        Debug.Log($"Distance to player: {distance}");
 
-        if (distance <= attackDistance && !isAttacking) // Start attacking when close enough
+        if (distance <= attackDistance && !isAttacking)
         {
+            // Attack player
             Debug.Log("Player is within attack distance. Starting attack.");
             animator.SetBool("run", false); // Stop running
             animator.SetBool("attack", true); // Start attacking
             isAttacking = true; // Prevent redundant attacks
         }
-        else if (distance <= chaseDistance && distance > attackDistance) // Start chasing when within chaseDistance
+        else if (distance <= chaseDistance && distance > attackDistance)
         {
+            // Chase player
             Debug.Log("Player is within chase distance but outside attack range. Chasing player.");
             animator.SetBool("idle", false); // Stop idling
             animator.SetBool("run", true); // Start running
@@ -49,8 +71,9 @@ public class zommieGUY : MonoBehaviour
             // Flip sprite based on direction
             spriteR.flipX = direction.x < 0;
         }
-        else // Idle when the player is out of range
+        else
         {
+            // Idle state
             Debug.Log("Player is out of range. Return to idle state.");
             animator.SetBool("idle", true);
             animator.SetBool("run", false);
@@ -61,9 +84,15 @@ public class zommieGUY : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        if (col.gameObject.CompareTag("PlayerAttack")) // Player's attack collider
+        {
+            Debug.Log("NPC hit by player.");
+            TakeDamage(2); // Take damage when hit
+        }
+
         if (col.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player entered the trigger zone. zom starts running.");
+            Debug.Log("Player entered the trigger zone. NPC starts running.");
             animator.SetBool("idle", false); // Stop idling
             animator.SetBool("run", true); // Start running
         }

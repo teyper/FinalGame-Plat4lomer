@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+
+
 public class Player : MonoBehaviour
 {
     [SerializeField] float Speed = 2f;
@@ -10,9 +14,12 @@ public class Player : MonoBehaviour
     //  [SerializeField] float ControlSensY = 0.3f;
 
 
+    //hit damage
+   // [SerializeField] private int health = 8;
+    bool hit = true;
+    //private bool_onHit = false;
 
-
-
+    [SerializeField] private GameObject attackZone; // Drag the AttackZone GameObject in the Inspector
     Animator animator;
     SpriteRenderer spriteRenderer;
     Rigidbody2D Rbody;
@@ -124,9 +131,15 @@ public class Player : MonoBehaviour
             //animator.SetBool("walk",false);
         }
 
-            //spriteRenderer.flipX = false;
-            //laserDirection = Vector3.right;
-        
+        //spriteRenderer.flipX = false;
+        //laserDirection = Vector3.right;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.SetBool("attack", true);
+            attackZone.SetActive(true); // Enable attack zone
+            Invoke("DisableAttackZone", 0.5f); // Disable after 0.5 seconds
+        }
 
         if (x < -ControlSensX)
         {
@@ -170,6 +183,27 @@ public class Player : MonoBehaviour
             animator.SetBool("walk", false);
             
         }
+    }
+
+    /* private void OnCollisionEnter(Collision2D other)
+     {
+         Debug.Log("Im hit!");
+         var hit = other.GetComponent<IDamageable>();
+
+         if (hit != null )
+         {
+             other.HitOnAttack();
+         }
+
+     }*/
+   
+
+ 
+
+    private void DisableAttackZone()
+    {
+        attackZone.SetActive(false); // Disable attack zone
+        animator.SetBool("attack", false);
     }
 
 }
