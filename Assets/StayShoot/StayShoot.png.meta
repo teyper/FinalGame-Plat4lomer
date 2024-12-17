@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cfff8be6c9e2845d893bfc4e2b935dc8
+guid: e00b4d04308f84bfe9a49129aae3301e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: StayShoot_0
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 259
+        width: 37
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f057b2eb449fd433dadece73cfb491e8
+      internalID: 680071938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StayShoot_1
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 260
+        width: 44
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36e933318d3724c4b985609a12b96baf
+      internalID: 1140734473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StayShoot_2
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 257
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a6b8cbc1175a40479cf82d064b211f9
+      internalID: -1260052169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StayShoot_3
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 256
+        width: 29
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10f75d83d64a04bd991d4ee19594647d
+      internalID: -175784580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +203,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      StayShoot_0: 680071938
+      StayShoot_1: 1140734473
+      StayShoot_2: -1260052169
+      StayShoot_3: -175784580
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,26 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-
-public interface IDamageable
-{
-    void OnTriggerHitOnAttack();
-    // if (hit == true )
-
-
-}
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] TMP_Text gameOverText;
 
-    // Update is called once per frame
-    void Update()
+    public void GameOver()
     {
-        
+        Debug.Log("Game Over!");
+        if (gameOverText != null)
+        {
+            gameOverText.text = "Game Over!";
+            gameOverText.enabled = true; // Show Game Over message
+        }
+
+        // Optionally freeze the game
+        Time.timeScale = 0;
     }
 }

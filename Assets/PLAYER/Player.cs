@@ -67,15 +67,7 @@ public class Player : MonoBehaviour
             Debug.Log("yes");
         }
 
-        /*if (Input.GetKeyUp(KeyCode.UpArrow) && Ground)
-        {
-            //jump
-            animator.SetBool("jump", true);
-            rigidbody2D.AddForce(jumpF * Vector3.up);
-            Ground = true;
-        }*/
-
-
+        
 
 
         //walk right 
@@ -89,12 +81,7 @@ public class Player : MonoBehaviour
             spriteRenderer.flipX = false;
             //laserDirection = Vector3.right;
         }
-       /* if (Input.GetKeyUp(KeyCode.RightArrow))
-        {
-            //runs when up arrow is released
-            animator.SetBool("walk", false);
-            spriteRenderer.flipX = false;
-        }*/
+      
 
         //walk left 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -107,14 +94,7 @@ public class Player : MonoBehaviour
             spriteRenderer.flipX = true;
             //laserDirection = Vector3.left;
         }
-        /*if (Input.GetKeyUp(KeyCode.LeftArrow))
-        {
-            //runs when up arrow is released
-            animator.SetBool("walk", false);
-           // animator.SetBool("idle", true);
-            spriteRenderer.flipX = true;
-        }*/
-
+        
         //attack
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -131,14 +111,13 @@ public class Player : MonoBehaviour
             //animator.SetBool("walk",false);
         }
 
-        //spriteRenderer.flipX = false;
-        //laserDirection = Vector3.right;
+       
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)) // When attack button is pressed
         {
             animator.SetBool("attack", true);
-            attackZone.SetActive(true); // Enable attack zone
-            Invoke("DisableAttackZone", 0.5f); // Disable after 0.5 seconds
+            attackZone.SetActive(true); // Activate attack hitbox
+            Invoke("DisableAttackZone", 0.5f); // Deactivate after 0.5 seconds
         }
 
         if (x < -ControlSensX)
@@ -185,25 +164,15 @@ public class Player : MonoBehaviour
         }
     }
 
-    /* private void OnCollisionEnter(Collision2D other)
-     {
-         Debug.Log("Im hit!");
-         var hit = other.GetComponent<IDamageable>();
+    
 
-         if (hit != null )
-         {
-             other.HitOnAttack();
-         }
 
-     }*/
-   
 
- 
 
     private void DisableAttackZone()
     {
-        attackZone.SetActive(false); // Disable attack zone
-        animator.SetBool("attack", false);
+        attackZone.SetActive(false);
+        animator.SetBool("attack", false); // Reset attack animation
     }
 
 }
