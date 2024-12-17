@@ -4,79 +4,76 @@ using UnityEngine;
 
 public class crowfly : MonoBehaviour
 {
-    //position
+    // Position boundaries
     [SerializeField] float Left = -8f;
     [SerializeField] float Right = 8f;
     [SerializeField] float Top = 5f;
     [SerializeField] float Bottom = -5f;
-    //boundaries 
-    [SerializeField] float Lb = -8f;
-    [SerializeField] float Rb = 8f;
-    [SerializeField] float Tb = 5f;
-    [SerializeField] float Bb = -5f;
-    //speed movement 
+
+    // Speed and velocity settings
     [SerializeField] float MaxVelocity = 4.5f;
     [SerializeField] float MaxRotationVelocity = 0f;
 
-    GameManager gameManager;
+    // Falling Object Settings
+    [SerializeField] GameObject FallingObjectPrefab; // Drag the falling prefab in the Inspector
+    [SerializeField] float DropInterval = 2f;
+    [SerializeField] float LifeTime = 2f;// Time interval between drops
 
+    // Other components
+    GameManager gameManager;
     SpriteRenderer spriteRenderer;
 
-    // Start is called before the first frame update
     void Start()
     {
-
+        // Initialize GameManager and Rigidbody
         gameManager = FindObjectOfType<GameManager>();
-        //bird placement
-        transform.position = new Vector3(Random.Range(Lb, Rb), Random.Range(Tb, Bb), 0f);
-        Rigidbody2D rigidbody2;
-        rigidbody2 = GetComponent<Rigidbody2D>();
+        Rigidbody2D rigidbody2 = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        // speed/travel of birds
+        // Set bird position
+        transform.position = new Vector3(Random.Range(Left, Right), Random.Range(Top, Bottom), 0f);
+
+        // Randomize bird velocity
         float RandomXVelocity = Random.Range(-MaxVelocity, MaxVelocity);
         float RandomYVelocity = Random.Range(-MaxVelocity, MaxVelocity);
-
         rigidbody2.velocity = new Vector3(RandomXVelocity, RandomYVelocity, 0f);
-        //rotation
+
+        // Randomize bird rotation
         rigidbody2.angularVelocity = Random.Range(-MaxRotationVelocity, MaxRotationVelocity);
 
-
+        // Start dropping objects
+        InvokeRepeating("DropFallingObject", LifeTime, DropInterval);
     }
 
-    // Update is called once per frame
     void Update()
     {
-       /* if (gameManager.gameOver == true)
-        {
-            Rigidbody2D rigidbody2;
-            rigidbody2 = GetComponent<Rigidbody2D>();
-            rigidbody2.velocity = Vector3.zero;
-            rigidbody2.angularVelocity = 0;
-        }*/
-        //past left --> Wrap to right
-
+        // Wrap position horizontally
         if (transform.position.x < Left)
-        {
             transform.position = new Vector3(Right, transform.position.y, transform.position.z);
-            //spriteRenderer.flipX = false;
-        }
-        // past right --> Wrap to left
+
         if (transform.position.x > Right)
-        {
             transform.position = new Vector3(Left, transform.position.y, transform.position.z);
-            spriteRenderer.flipX = true;
-        }
-        // past top --> Wrap to bottom
+
+        // Wrap position vertically
         if (transform.position.y > Top)
-        {
             transform.position = new Vector3(transform.position.x, Bottom, transform.position.z);
-        }
-        //past botton --> Wrap to top
+
         if (transform.position.y < Bottom)
-        {
             transform.position = new Vector3(transform.position.x, Top, transform.position.z);
-        }
     }
 
+    // Drop a falling object directly below the crow
+    void DropFallingObject()
+    {
+        if (FallingObjectPrefab != null)
+        {
+            Vector3 dropPosition = new Vector3(transform.position.x, transform.position.y - 0.5f, 0f);
+            Instantiate(FallingObjectPrefab, dropPosition, Quaternion.identity);
+            Debug.Log("Falling object dropped!");
+        }
+        else
+        {
+            Debug.LogError("FallingObjectPrefab not assigned in the Inspector.");
+        }
+    }
 }
