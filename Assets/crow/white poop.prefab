@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6043184486187267085}
   - component: {fileID: 9159677106740017511}
   - component: {fileID: 2628213015987379301}
-  - component: {fileID: 3971084380379564419}
+  - component: {fileID: 1472790069383878221}
   m_Layer: 0
   m_Name: white poop
   m_TagString: crow
@@ -149,7 +149,7 @@ CircleCollider2D:
   m_Offset: {x: 0.06009579, y: 0}
   serializedVersion: 2
   m_Radius: 3.983807
---- !u!114 &3971084380379564419
+--- !u!114 &1472790069383878221
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,11 +158,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 994934292326007165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be4a178da6d534bf4b2d786c760d438d, type: 3}
+  m_Script: {fileID: 11500000, guid: 74dc80d89b84f48928f80ce14e0795a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FallingObjectPrefab: {fileID: 0}
-  crowParticleEffect: {fileID: 8201371380422923919, guid: 1b763c815b5e74c388c2d4369e1cac67, type: 3}
-  DropInterval: 2
-  explosionAudio: {fileID: 8300000, guid: af5b72e046e6f4a00955f47bb6ee6d27, type: 3}
-  audioSource: {fileID: 0}
+  poopParticleEffect: {fileID: 8201371380422923919, guid: 1b763c815b5e74c388c2d4369e1cac67, type: 3}

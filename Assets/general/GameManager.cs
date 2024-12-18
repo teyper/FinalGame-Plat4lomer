@@ -23,15 +23,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         UpdateUI();
-        GOmessageText.enabled = false; // Hide messages at the start
-        MCmessageText.enabled = false;
-
-        if (audioSource != null && gameOverSound != null)
-        {
-            Debug.Log("Testing Game Over Sound...");
-            audioSource.PlayOneShot(gameOverSound); // Test the sound
-        }
-        
+        GOmessageText.enabled = false; // Hide Game Over message at start
+        MCmessageText.enabled = false; // Hide Mission Complete message at start
     }
 
     // Update health and check for game over
@@ -45,7 +38,7 @@ public class GameManager : MonoBehaviour
         if (playerHealth <= 0)
         {
             playerHealth = 0;
-            TriggerGameOver(); // Trigger game over
+            TriggerGameOver(); // Trigger Game Over
         }
 
         UpdateUI();
@@ -67,21 +60,21 @@ public class GameManager : MonoBehaviour
 
         gameOver = true;
 
+        Debug.Log("Game Over triggered."); // Debug log for confirmation
+
         GOmessageText.text = "Game Over!";
         GOmessageText.enabled = true;
 
-        // Play game over sound
+        // Play Game Over sound
         if (audioSource != null && gameOverSound != null)
         {
-            audioSource.Stop(); // Stop any previously playing audio to avoid overlap
+            audioSource.Stop(); // Stop any other sounds
             audioSource.PlayOneShot(gameOverSound);
         }
 
-        // Schedule scene reload
-        Invoke("ReloadSplashScreen", 3f); // Adjust time as needed
+        // Schedule the splash screen reload
+        Invoke("ReloadSplashScreen", 3f);
     }
-
-
 
     // Trigger Mission Complete
     public void MissionComplete()
@@ -92,13 +85,14 @@ public class GameManager : MonoBehaviour
         MCmessageText.text = "Mission Complete!";
         MCmessageText.enabled = true;
 
-        // Play mission complete sound
+        // Play Mission Complete sound
         if (audioSource != null && missionCompleteSound != null)
         {
+            audioSource.Stop(); // Stop any other sounds
             audioSource.PlayOneShot(missionCompleteSound);
         }
 
-        // Restart the game after 3 seconds
+        // Schedule the splash screen reload
         Invoke("ReloadSplashScreen", 3f);
     }
 
@@ -112,6 +106,10 @@ public class GameManager : MonoBehaviour
     // Reload the splash screen
     void ReloadSplashScreen()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("SplashScreen");
+        Debug.Log("Reloading Splash Screen...");
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "SplashScreen")
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("SplashScreen");
+        }
     }
 }
