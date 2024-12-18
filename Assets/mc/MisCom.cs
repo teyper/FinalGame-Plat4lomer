@@ -1,48 +1,43 @@
 using UnityEngine;
 
-public class MisComp : MonoBehaviour
+public class MissionComplete : MonoBehaviour
 {
-    [Header("Mission Accomplished Settings")]
-    [SerializeField] GameObject risingSpritePrefab; // Prefab for the rising sprite
-    [SerializeField] float riseSpeed = 2f; // Speed at which the sprite rises
-    [SerializeField] float riseDuration = 3f; // Time the sprite takes to rise
+    [SerializeField] GameObject missionCompleteDisplay; // Assign the "Mission Complete" UI GameObject in Inspector
+    [SerializeField] AudioClip missionCompleteSound;    // Assign the mission complete sound in Inspector
+    [SerializeField] string splashScreenSceneName = "Splasher"; // Splash screen scene name
 
-    private bool hasTriggered = false; // Prevents multiple triggers
+    private AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>(); // Add AudioSource if missing
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !hasTriggered)
+        if (other.CompareTag("Player")) // Player reaches the mission complete area
         {
-            hasTriggered = true; // Prevent retriggering
-            InstantiateRisingSprite();
+            Debug.Log("Mission Complete!");
+            if (missionCompleteDisplay != null)
+            {
+                missionCompleteDisplay.SetActive(true); // Show Mission Complete display
+            }
+
+            //if (missionCompleteSound != null)
+           // {
+           //     audioSource.PlayOneShot(missionCompleteSound); // Play mission complete sound
+            //}
+
+            Invoke("ReturnToSplashScreen", 5f); // Wait 5 seconds, then return to splash screen
         }
     }
 
-    void InstantiateRisingSprite()
+    void ReturnToSplashScreen()
     {
-        // Instantiate the rising sprite prefab at the current position
-        GameObject risingSprite = Instantiate(risingSpritePrefab, transform.position, Quaternion.identity);
-
-        // Start rising motion
-        StartCoroutine(RiseSprite(risingSprite));
-    }
-
-    System.Collections.IEnumerator RiseSprite(GameObject sprite)
-    {
-        float elapsedTime = 0f;
-
-        // Save the starting position
-        Vector3 startPosition = sprite.transform.position;
-
-        while (elapsedTime < riseDuration)
-        {
-            // Calculate the new position based on rise speed
-            sprite.transform.position = startPosition + Vector3.up * (riseSpeed * elapsedTime);
-
-            elapsedTime += Time.deltaTime; // Increment time
-            yield return null; // Wait for the next frame
-        }
-
-        Destroy(sprite); // Optionally destroy the sprite after rising
+        UnityEngine.SceneManagement.SceneManager.LoadScene(splashScreenSceneName); // Load splash screen
     }
 }

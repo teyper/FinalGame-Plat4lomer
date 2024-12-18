@@ -21,14 +21,15 @@ public class Player : MonoBehaviour
     [SerializeField] float bs_y_offset = -0.5f; // Vertical offset for bs spawn
     [SerializeField] float bsSpeed = 3f; // Speed of the attack projectile
     [SerializeField] float bsLifeTime = 1f; // Time before projectile is destroyed
-    [SerializeField] AudioClip attackSound; // Sound for attack
+
+    [Header("Audio Settings")]
+    [SerializeField] AudioSource attackAudioSource; // Reference to AudioSource for attack sound
 
     [Header("References")]
     Animator animator;
     SpriteRenderer spriteRenderer;
     Rigidbody2D rb;
     GameManager gMan;
-    AudioSource audioSource;
 
     bool isGrounded = true;
 
@@ -37,10 +38,15 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        audioSource = GetComponent<AudioSource>();
 
         gMan = FindObjectOfType<GameManager>();
         if (gMan == null) Debug.LogError("GameManager not found!");
+
+        // Ensure AudioSource is set
+        if (attackAudioSource == null)
+        {
+            Debug.LogError("Attack AudioSource is not assigned!");
+        }
     }
 
     void Update()
@@ -90,9 +96,9 @@ public class Player : MonoBehaviour
             animator.SetBool("attack", true);
 
             // Play attack sound
-            if (audioSource != null && attackSound != null)
+            if (attackAudioSource != null)
             {
-                audioSource.PlayOneShot(attackSound);
+                attackAudioSource.Play();
             }
 
             // Instantiate attack prefab

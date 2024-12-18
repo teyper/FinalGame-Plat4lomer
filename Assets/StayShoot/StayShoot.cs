@@ -2,18 +2,19 @@ using UnityEngine;
 
 public class StayShoot : MonoBehaviour
 {
-    [SerializeField] GameObject LaserPrefab;
-    [SerializeField] GameObject shooterParticleEffect; // Particle effect prefab
-    [SerializeField] float FireRate = 1f;
-    [SerializeField] AudioClip laserSound; // Laser sound
-    AudioSource audioSource;
-    AudioSource audi;
+    [SerializeField] GameObject LaserPrefab;            // Prefab for the laser
+    [SerializeField] GameObject shooterParticleEffect;  // Particle effect prefab
+    [SerializeField] float FireRate = 1f;               // Rate at which lasers are fired
+    [SerializeField] AudioSource audioSource;           // AudioSource for playing sounds
+    [SerializeField] AudioClip explosionAudio;          // Explosion sound clip
+
     GameManager gMan;
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        audi = GetComponent<AudioSource>();
+        gMan = FindObjectOfType<GameManager>();
+        if (gMan == null) Debug.LogError("GameManager not found!");
+
         InvokeRepeating("InstantiateLaser", 0f, FireRate);
     }
 
@@ -22,32 +23,32 @@ public class StayShoot : MonoBehaviour
         Vector3 laserPosition = transform.position + new Vector3(0f, -0.5f, 0f);
         GameObject laser = Instantiate(LaserPrefab, laserPosition, Quaternion.identity);
         Destroy(laser, 3f);
-
-        // Play laser sound
-        if (laserSound != null && audioSource != null)
-        {
-            audioSource.PlayOneShot(laserSound);
-        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("playerZ") || other.CompareTag("Player"))
+        if (other.CompareTag("playerZ") || other.CompareTag("Player")) // Hit by Player's attack
         {
-            GameManager gMan = FindObjectOfType<GameManager>();
-            gMan.AddScore(500);
-            Instantiate(shooterParticleEffect, transform.position, Quaternion.identity);
-            Destroy(gameObject);
-
-            // Play destroy sound
-            if (audi != null)
+            if (gMan != null)
             {
-                audi.Play();
+                gMan.AddScore(500); // Add score
             }
 
-            Destroy(other.gameObject);
+            // Play explosion sound
+            if (audioSource != null && explosionAudio != null)
+            {
+                audioSource.PlayOneShot(explosionAudio);
+            }
+
+            // Spawn particle effect
+            Instantiate(shooterParticleEffect, transform.position, Quaternion.identity);
+
+            Destroy(gameObject); // Destroy shooter
+            Destroy(other.gameObject); // Destroy player's attack
         }
     }
+
+
 
 
 

@@ -12,6 +12,7 @@ TagManager:
   - crow
   - shooter
   - player
+  - king
   layers:
   - Default
   - TransparentFX
