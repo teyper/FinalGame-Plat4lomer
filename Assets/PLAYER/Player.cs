@@ -139,7 +139,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Player hit by projectile!");
             gMan.UpdateHealth(other.CompareTag("shooter") ? -5 : -10); // Lose health
-            Destroy(other.gameObject); // Destroy the projectile
+            //Destroy(other.gameObject); // Destroy the projectile
         }
     }
 

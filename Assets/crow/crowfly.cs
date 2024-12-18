@@ -6,7 +6,7 @@ public class crowfly : MonoBehaviour
 {
     [SerializeField] GameObject FallingObjectPrefab; // Falling object prefab
     [SerializeField] GameObject crowParticleEffect;  // Particle effect prefab
-    [SerializeField] float DropInterval = 2f;        // Interval for dropping objects
+    [SerializeField] float DropInterval = 1f;        // Interval for dropping objects
     [SerializeField] AudioClip explosionAudio;       // Explosion sound clip
     [SerializeField] AudioSource audioSource;        // AudioSource to play sounds
 

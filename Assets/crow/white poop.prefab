@@ -162,3 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poopParticleEffect: {fileID: 8201371380422923919, guid: 1b763c815b5e74c388c2d4369e1cac67, type: 3}
+  explosionSound: {fileID: 8300000, guid: af5b72e046e6f4a00955f47bb6ee6d27, type: 3}
+  scoreForDestruction: 200
+  healthPenalty: -10

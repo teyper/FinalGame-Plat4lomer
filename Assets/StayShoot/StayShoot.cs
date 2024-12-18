@@ -27,7 +27,7 @@ public class StayShoot : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("playerZ") || other.CompareTag("Player")) // Hit by Player's attack
+        if (other.CompareTag("playerZ")) // Hit by Player's attack
         {
             if (gMan != null)
             {

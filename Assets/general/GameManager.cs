@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMP_Text scoreText;
     [SerializeField] TMP_Text GOmessageText; // Game Over message
     [SerializeField] TMP_Text MCmessageText; // Mission Complete message
+    [SerializeField] TMP_Text timerText;
 
     [Header("Audio")]
     [SerializeField] AudioSource audioSource;
@@ -19,97 +20,114 @@ public class GameManager : MonoBehaviour
     public int playerScore = 0;    // Score starts at 0
     private bool gameOver = false; // Tracks game over state
     private bool missionComplete = false; // Tracks mission complete state
+    private float timer = 90f; // Timer set to 2 minutes 30 seconds
 
     void Start()
     {
         UpdateUI();
         GOmessageText.enabled = false; // Hide Game Over message at start
         MCmessageText.enabled = false; // Hide Mission Complete message at start
+        timerText.enabled = true; // Show timer text
     }
 
-    // Update health and check for game over
+    void Update()
+    {
+        if (!gameOver && !missionComplete)
+        {
+            UpdateTimer(); // Continuously update the timer during gameplay
+        }
+    }
+
+    void UpdateTimer()
+    {
+        timer -= Time.deltaTime;
+
+        if (timer <= 0)
+        {
+            timer = 0;
+            TriggerGameOver(); // Trigger game over when timer runs out
+        }
+
+        UpdateTimerUI();
+    }
+
+    void UpdateTimerUI()
+    {
+        int minutes = Mathf.FloorToInt(timer / 60f);
+        int seconds = Mathf.FloorToInt(timer % 60f);
+        timerText.text = $"Time: {minutes:00}:{seconds:00}";
+    }
+
     public void UpdateHealth(int amount)
     {
-        if (gameOver || missionComplete) return; // Stop if game is already over or mission is complete
+        if (gameOver || missionComplete) return;
 
         playerHealth += amount;
-        Debug.Log($"Player health updated: {playerHealth}");
 
         if (playerHealth <= 0)
         {
             playerHealth = 0;
-            TriggerGameOver(); // Trigger Game Over
+            TriggerGameOver();
         }
 
         UpdateUI();
     }
 
-    // Update player score
     public void AddScore(int amount)
     {
-        if (gameOver || missionComplete) return; // Stop if game is already over or mission is complete
+        if (gameOver || missionComplete) return;
 
         playerScore += amount;
         UpdateUI();
     }
 
-    // Trigger Game Over
     public void TriggerGameOver()
     {
-        if (gameOver) return; // Prevent multiple triggers
+        if (gameOver) return;
 
         gameOver = true;
-
-        Debug.Log("Game Over triggered."); // Debug log for confirmation
 
         GOmessageText.text = "Game Over!";
         GOmessageText.enabled = true;
 
-        // Play Game Over sound
         if (audioSource != null && gameOverSound != null)
         {
-            audioSource.Stop(); // Stop any other sounds
+            audioSource.Stop();
             audioSource.PlayOneShot(gameOverSound);
         }
 
-        // Schedule the splash screen reload
         Invoke("ReloadSplashScreen", 3f);
     }
 
-    // Trigger Mission Complete
     public void MissionComplete()
     {
-        if (missionComplete) return; // Prevent multiple triggers
+        if (missionComplete) return;
+
         missionComplete = true;
 
         MCmessageText.text = "Mission Complete!";
         MCmessageText.enabled = true;
 
-        // Play Mission Complete sound
         if (audioSource != null && missionCompleteSound != null)
         {
-            audioSource.Stop(); // Stop any other sounds
+            audioSource.Stop();
             audioSource.PlayOneShot(missionCompleteSound);
         }
 
-        // Schedule the splash screen reload
         Invoke("ReloadSplashScreen", 3f);
     }
 
-    // Update UI elements
     void UpdateUI()
     {
         healthText.text = "Health: " + playerHealth;
         scoreText.text = "Score: " + playerScore;
     }
 
-    // Reload the splash screen
     void ReloadSplashScreen()
     {
-        Debug.Log("Reloading Splash Screen...");
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "SplashScreen")
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "Splasher")
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("SplashScreen");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Splasher");
         }
     }
 }
