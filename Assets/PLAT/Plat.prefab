@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2908931219889658516}
   m_Layer: 0
   m_Name: walkcap
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,9 +111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b854a27b59c9427baf0398d871ab895, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserPrefab: {fileID: 6440577492884042629, guid: 58995ffb34f39435594440337d63be0d, type: 3}
-  firePoint: {fileID: 2970429870008282538}
-  fireRate: 2
+  LaserPrefab: {fileID: 0}
+  shooterParticleEffect: {fileID: 0}
+  FireRate: 1
+  audioSource: {fileID: 0}
+  explosionAudio: {fileID: 0}
 --- !u!1 &8555196564465295283
 GameObject:
   m_ObjectHideFlags: 0

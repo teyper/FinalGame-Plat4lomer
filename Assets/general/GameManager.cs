@@ -25,13 +25,12 @@ public class GameManager : MonoBehaviour
         UpdateUI();
         GOmessageText.enabled = false; // Hide messages at the start
         MCmessageText.enabled = false;
-     
-       
-            if (audioSource != null && gameOverSound != null)
-            {
-                audioSource.PlayOneShot(gameOverSound); // Test if sound works
-            }
-            UpdateUI();
+
+        if (audioSource != null && gameOverSound != null)
+        {
+            Debug.Log("Testing Game Over Sound...");
+            audioSource.PlayOneShot(gameOverSound); // Test the sound
+        }
         
     }
 
@@ -65,6 +64,7 @@ public class GameManager : MonoBehaviour
     public void TriggerGameOver()
     {
         if (gameOver) return; // Prevent multiple triggers
+
         gameOver = true;
 
         GOmessageText.text = "Game Over!";
@@ -73,12 +73,15 @@ public class GameManager : MonoBehaviour
         // Play game over sound
         if (audioSource != null && gameOverSound != null)
         {
+            audioSource.Stop(); // Stop any previously playing audio to avoid overlap
             audioSource.PlayOneShot(gameOverSound);
         }
 
-        // Restart the game after 3 seconds
-        Invoke("ReloadSplashScreen", 3f);
+        // Schedule scene reload
+        Invoke("ReloadSplashScreen", 3f); // Adjust time as needed
     }
+
+
 
     // Trigger Mission Complete
     public void MissionComplete()
