@@ -124,7 +124,8 @@ MonoBehaviour:
   FallingObjectPrefab: {fileID: 994934292326007165, guid: d26abd8eb8905488c8979ce9a0b5b42a, type: 3}
   crowParticleEffect: {fileID: 6429750409453174548, guid: db8ac7e59303c47eca16f3a8b702f5a1, type: 3}
   DropInterval: 2
-  poopParticleEffect: {fileID: 8201371380422923919, guid: 1b763c815b5e74c388c2d4369e1cac67, type: 3}
+  crowDestroySound: {fileID: 8300000, guid: af5b72e046e6f4a00955f47bb6ee6d27, type: 3}
+  dropSound: {fileID: 0}
 --- !u!50 &7916386498901744914
 Rigidbody2D:
   serializedVersion: 4

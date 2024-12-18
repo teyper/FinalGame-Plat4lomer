@@ -9,20 +9,26 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMP_Text messageText;
     [SerializeField] TMP_Text messageText1;
 
-
     [Header("Game Settings")]
-    public int playerHealth = 100; // Health starts at 100
-    public int playerScore = 0;    // Score starts at 0
-    bool gameOver = false;         // Tracks game state
+    public int playerHealth = 100;
+    public int playerScore = 0;
+    bool gameOver = false;
+
+    [Header("Audio Clips")]
+    [SerializeField] AudioClip gameOverSound;
+    [SerializeField] AudioClip missionCompleteSound;
+
+    AudioSource audioSource;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         UpdateUI();
-        messageText.enabled = false; // Hide messages at the start
+        messageText.enabled = false;
         messageText1.enabled = false;
+
     }
 
-    // Update health and check for game over
     public void UpdateHealth(int amount)
     {
         if (gameOver) return;
@@ -32,13 +38,12 @@ public class GameManager : MonoBehaviour
         if (playerHealth <= 0)
         {
             playerHealth = 0;
-            GameOver(); // Trigger game over
+            GameOver();
         }
 
         UpdateUI();
     }
 
-    // Update player score
     public void AddScore(int amount)
     {
         if (gameOver) return;
@@ -47,16 +52,21 @@ public class GameManager : MonoBehaviour
         UpdateUI();
     }
 
-    // Trigger Game Over
     void GameOver()
     {
         gameOver = true;
         messageText.text = "Game Over!";
         messageText.enabled = true;
-        Time.timeScale = 0; // Freeze the game
+
+        // Play Game Over Sound
+        if (gameOverSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(gameOverSound);
+        }
+
+        Time.timeScale = 0;
     }
 
-    // Trigger Mission Complete
     public void MissionComplete()
     {
         if (gameOver) return;
@@ -64,10 +74,16 @@ public class GameManager : MonoBehaviour
         gameOver = true;
         messageText1.text = "Mission Complete!";
         messageText1.enabled = true;
-        Time.timeScale = 0; // Freeze the game
+
+        // Play Mission Complete Sound
+        if (missionCompleteSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(missionCompleteSound);
+        }
+
+        Time.timeScale = 0;
     }
 
-    // Update UI elements
     void UpdateUI()
     {
         healthText.text = "Health: " + playerHealth;

@@ -21,12 +21,14 @@ public class Player : MonoBehaviour
     [SerializeField] float bs_y_offset = -0.5f; // Vertical offset for bs spawn
     [SerializeField] float bsSpeed = 3f; // Speed of the attack projectile
     [SerializeField] float bsLifeTime = 1f; // Time before projectile is destroyed
+    [SerializeField] AudioClip attackSound; // Sound for attack
 
     [Header("References")]
     Animator animator;
     SpriteRenderer spriteRenderer;
     Rigidbody2D rb;
     GameManager gMan;
+    AudioSource audioSource;
 
     bool isGrounded = true;
 
@@ -35,6 +37,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
 
         gMan = FindObjectOfType<GameManager>();
         if (gMan == null) Debug.LogError("GameManager not found!");
@@ -86,6 +89,12 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("attack", true);
 
+            // Play attack sound
+            if (audioSource != null && attackSound != null)
+            {
+                audioSource.PlayOneShot(attackSound);
+            }
+
             // Instantiate attack prefab
             Vector3 spawnPosition = transform.position + new Vector3(bs_x_offset * (spriteRenderer.flipX ? -1 : 1), bs_y_offset, 0f);
             GameObject bs = Instantiate(bsPrefab, spawnPosition, Quaternion.identity);
@@ -118,7 +127,7 @@ public class Player : MonoBehaviour
     }
 
     // Handle projectile collisions
-   /* private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("shooter") || other.CompareTag("crow"))
         {
@@ -126,7 +135,7 @@ public class Player : MonoBehaviour
             gMan.UpdateHealth(other.CompareTag("shooter") ? -5 : -10); // Lose health
             Destroy(other.gameObject); // Destroy the projectile
         }
-    }*/
+    }
 
     // Constrain player position within the specified bounds
     void ClampPosition()
