@@ -1,43 +1,55 @@
 using UnityEngine;
 
-public class MissionComplete : MonoBehaviour
+public class MissionCompleteTrigger : MonoBehaviour
 {
-    [SerializeField] GameObject missionCompleteDisplay; // Assign the "Mission Complete" UI GameObject in Inspector
-    [SerializeField] AudioClip missionCompleteSound;    // Assign the mission complete sound in Inspector
-    [SerializeField] string splashScreenSceneName = "Splasher"; // Splash screen scene name
-
+    [SerializeField] GameObject missionCompleteSpritePrefab; // Sprite prefab for mission complete
+    [SerializeField] AudioClip missionCompleteSound;         // Audio for mission complete
     private AudioSource audioSource;
+    private bool missionCompleted = false;                   // Ensure it triggers only once
+
+    private GameManager gMan;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
-            audioSource = gameObject.AddComponent<AudioSource>(); // Add AudioSource if missing
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        gMan = FindObjectOfType<GameManager>();
+        if (gMan == null)
+        {
+            Debug.LogError("GameManager not found in the scene!");
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) // Player reaches the mission complete area
+        if (other.CompareTag("Player") && !missionCompleted) // Check if it's the player and not already completed
         {
-            Debug.Log("Mission Complete!");
-            if (missionCompleteDisplay != null)
+            missionCompleted = true; // Mark mission as completed to prevent multiple triggers
+
+            Debug.Log("Mission Complete Triggered!");
+
+            // Play mission complete sound
+            if (missionCompleteSound != null)
             {
-                missionCompleteDisplay.SetActive(true); // Show Mission Complete display
+                audioSource.PlayOneShot(missionCompleteSound);
             }
 
-            //if (missionCompleteSound != null)
-           // {
-           //     audioSource.PlayOneShot(missionCompleteSound); // Play mission complete sound
-            //}
+            // Instantiate the mission complete sprite
+            if (missionCompleteSpritePrefab != null)
+            {
+                Instantiate(missionCompleteSpritePrefab, transform.position, Quaternion.identity);
+            }
 
-            Invoke("ReturnToSplashScreen", 5f); // Wait 5 seconds, then return to splash screen
+            // Notify the GameManager
+            if (gMan != null)
+            {
+                gMan.MissionComplete();
+            }
         }
     }
-
-    void ReturnToSplashScreen()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(splashScreenSceneName); // Load splash screen
-    }
 }
+

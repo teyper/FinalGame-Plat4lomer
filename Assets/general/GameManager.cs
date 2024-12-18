@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,86 +8,84 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMP_Text healthText;
     [SerializeField] TMP_Text scoreText;
     [SerializeField] TMP_Text messageText;
-    [SerializeField] TMP_Text messageText1;
 
     [Header("Game Settings")]
-    public int playerHealth = 100;
-    public int playerScore = 0;
-    bool gameOver = false;
-
-    [Header("Audio Clips")]
-    [SerializeField] AudioClip gameOverSound;
-    [SerializeField] AudioClip missionCompleteSound;
-
-    AudioSource audioSource;
+    public int playerHealth = 100; // Health starts at 100
+    public int playerScore = 0;    // Score starts at 0
+    private bool gameOver = false; // Tracks game state
+    private bool missionComplete = false;
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         UpdateUI();
-        messageText.enabled = false;
-        messageText1.enabled = false;
-
+        messageText.enabled = false; // Hide messages at the start
     }
 
+    // Update health and check for game over
     public void UpdateHealth(int amount)
     {
-        if (gameOver) return;
+        if (gameOver || missionComplete) return;
 
         playerHealth += amount;
 
         if (playerHealth <= 0)
         {
             playerHealth = 0;
-            GameOver();
+            GameOver(); // Trigger game over
         }
 
         UpdateUI();
     }
 
+    // Update player score
     public void AddScore(int amount)
     {
-        if (gameOver) return;
+        if (gameOver || missionComplete) return;
 
         playerScore += amount;
         UpdateUI();
     }
 
-    void GameOver()
+    // Trigger Game Over
+    public void GameOver()
     {
+        if (gameOver || missionComplete) return;
+
         gameOver = true;
         messageText.text = "Game Over!";
         messageText.enabled = true;
 
-        // Play Game Over Sound
-        if (gameOverSound != null && audioSource != null)
-        {
-            audioSource.PlayOneShot(gameOverSound);
-        }
+        Debug.Log("Game Over!");
 
-        Time.timeScale = 0;
+        // Return to splash screen after delay
+        Invoke("ReturnToSplashScreen", 5f);
     }
 
+    // Trigger Mission Complete
     public void MissionComplete()
     {
-        if (gameOver) return;
+        if (gameOver || missionComplete) return;
 
-        gameOver = true;
-        messageText1.text = "Mission Complete!";
-        messageText1.enabled = true;
+        missionComplete = true;
+        messageText.text = "Mission Complete!";
+        messageText.enabled = true;
 
-        // Play Mission Complete Sound
-        if (missionCompleteSound != null && audioSource != null)
-        {
-            audioSource.PlayOneShot(missionCompleteSound);
-        }
+        Debug.Log("Mission Complete!");
 
-        Time.timeScale = 0;
+        // Return to splash screen after delay
+        Invoke("ReturnToSplashScreen", 5f);
     }
 
+    // Update UI elements
     void UpdateUI()
     {
         healthText.text = "Health: " + playerHealth;
         scoreText.text = "Score: " + playerScore;
+    }
+
+    // Return to Splash Screen
+    void ReturnToSplashScreen()
+    {
+        SceneManager.LoadScene("SplashScreen");
     }
 }
