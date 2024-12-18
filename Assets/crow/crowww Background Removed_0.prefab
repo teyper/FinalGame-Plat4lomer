@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 5270083604325941603}
   - component: {fileID: 8887893845332110067}
   - component: {fileID: 7916386498901744914}
+  - component: {fileID: 1887559871872285}
   m_Layer: 0
   m_Name: crowww Background Removed_0
-  m_TagString: Untagged
+  m_TagString: crow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,12 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be4a178da6d534bf4b2d786c760d438d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Left: -8
-  Right: 8
-  Top: 40
-  Bottom: -120
-  MaxVelocity: 4.5
-  MaxRotationVelocity: 0
   FallingObjectPrefab: {fileID: 994934292326007165, guid: d26abd8eb8905488c8979ce9a0b5b42a, type: 3}
   DropInterval: 2
 --- !u!50 &7916386498901744914
@@ -155,3 +150,48 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &1887559871872285
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430085570977829901}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.086701125, y: 0.08139266}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.90625, y: 1.17}
+    newSize: {x: 0.90625, y: 1.17}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.6549938, y: 0.45515892}
+  m_EdgeRadius: 0

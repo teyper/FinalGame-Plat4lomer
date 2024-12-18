@@ -1,79 +1,62 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class crowfly : MonoBehaviour
 {
-    // Position boundaries
-    [SerializeField] float Left = -8f;
-    [SerializeField] float Right = 8f;
-    [SerializeField] float Top = 5f;
-    [SerializeField] float Bottom = -5f;
+    [Header("Falling Object Settings")]
+    [SerializeField] GameObject FallingObjectPrefab; // White poop prefab
+    [SerializeField] float DropInterval = 2f;        // Time between drops
 
-    // Speed and velocity settings
-    [SerializeField] float MaxVelocity = 4.5f;
-    [SerializeField] float MaxRotationVelocity = 0f;
+    [Header("White Poop Settings")]
+    [SerializeField] float WhitePoopSpeed = 3f; // Speed of the falling white poop
 
-    // Falling Object Settings
-    [SerializeField] GameObject FallingObjectPrefab; // Drag the falling prefab in the Inspector
-    [SerializeField] float DropInterval = 2f;
-    [SerializeField] float LifeTime = 2f;// Time interval between drops
-
-    // Other components
-    GameManager gameManager;
-    SpriteRenderer spriteRenderer;
+    GameManager gMan;
 
     void Start()
     {
-        // Initialize GameManager and Rigidbody
-        gameManager = FindObjectOfType<GameManager>();
-        Rigidbody2D rigidbody2 = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        gMan = FindObjectOfType<GameManager>();
+        if (gMan == null) Debug.LogError("GameManager not found!");
 
-        // Set bird position
-        transform.position = new Vector3(Random.Range(Left, Right), Random.Range(Top, Bottom), 0f);
-
-        // Randomize bird velocity
-        float RandomXVelocity = Random.Range(-MaxVelocity, MaxVelocity);
-        float RandomYVelocity = Random.Range(-MaxVelocity, MaxVelocity);
-        rigidbody2.velocity = new Vector3(RandomXVelocity, RandomYVelocity, 0f);
-
-        // Randomize bird rotation
-        rigidbody2.angularVelocity = Random.Range(-MaxRotationVelocity, MaxRotationVelocity);
-
-        // Start dropping objects
-        InvokeRepeating("DropFallingObject", LifeTime, DropInterval);
+        InvokeRepeating("DropFallingObject", 0f, DropInterval); // Start dropping objects
     }
 
-    void Update()
-    {
-        // Wrap position horizontally
-        if (transform.position.x < Left)
-            transform.position = new Vector3(Right, transform.position.y, transform.position.z);
-
-        if (transform.position.x > Right)
-            transform.position = new Vector3(Left, transform.position.y, transform.position.z);
-
-        // Wrap position vertically
-        if (transform.position.y > Top)
-            transform.position = new Vector3(transform.position.x, Bottom, transform.position.z);
-
-        if (transform.position.y < Bottom)
-            transform.position = new Vector3(transform.position.x, Top, transform.position.z);
-    }
-
-    // Drop a falling object directly below the crow
     void DropFallingObject()
     {
-        if (FallingObjectPrefab != null)
+        GameObject fallingPoop = Instantiate(FallingObjectPrefab, transform.position + Vector3.down * 0.5f, Quaternion.identity);
+
+        // Add velocity to the falling poop
+        Rigidbody2D rb = fallingPoop.GetComponent<Rigidbody2D>();
+        if (rb == null)
         {
-            Vector3 dropPosition = new Vector3(transform.position.x, transform.position.y - 0.5f, 0f);
-            Instantiate(FallingObjectPrefab, dropPosition, Quaternion.identity);
-            Debug.Log("Falling object dropped!");
+            rb = fallingPoop.AddComponent<Rigidbody2D>();
+            rb.gravityScale = 0; // Disable gravity
         }
-        else
+        rb.velocity = Vector2.down * WhitePoopSpeed; // Make it fall vertically
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // Crow hit by player's attack
+        if (other.CompareTag("playerZ"))
         {
-            Debug.LogError("FallingObjectPrefab not assigned in the Inspector.");
+            gMan.AddScore(200); // Add 200 points
+            Destroy(gameObject); // Destroy crow
+            Destroy(other.gameObject); // Destroy player's attack
         }
     }
 }
+
+public class WhitePoopHandler : MonoBehaviour
+{
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // White poop is destroyed when hit by the player's attack
+        if (other.CompareTag("playerZ"))
+        {
+            Debug.Log("White poop destroyed!");
+            Destroy(gameObject); // Destroy white poop
+            Destroy(other.gameObject); // Destroy player's attack
+        }
+    }
+}
+
+

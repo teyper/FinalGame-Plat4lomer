@@ -16,5 +16,6 @@ public class shipflight : MonoBehaviour
     void Update()
     {
         transform.Translate(0f, Speed * Time.deltaTime, 0f);
+        Destroy(gameObject, 10f);
     }
 }

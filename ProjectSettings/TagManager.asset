@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - ground
+  - attackZ
+  - playerZ
+  - laser
+  - Bball
+  - crow
+  - shooter
+  - player
   layers:
   - Default
   - TransparentFX

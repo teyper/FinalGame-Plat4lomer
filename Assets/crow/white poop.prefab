@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2628213015987379301}
   m_Layer: 0
   m_Name: white poop
-  m_TagString: Bball
+  m_TagString: crow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

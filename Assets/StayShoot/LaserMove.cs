@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class LaserMove : MonoBehaviour
 {
-    [SerializeField] float laserSpeed = 1f; // Speed of the laser
-    [SerializeField] float lifeTime = 3f;   // Time before the laser is destroyed
+    [SerializeField] float laserSpeed = 3f; // Speed of the laser
+    [SerializeField] float lifeTime = 1f;   // Time before the laser is destroyed
 
     Rigidbody2D rb;
 
