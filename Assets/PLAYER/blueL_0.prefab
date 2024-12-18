@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6382684913991740665}
   - component: {fileID: 2183832581599260054}
   - component: {fileID: 8111209312487965091}
+  - component: {fileID: 3093812378485668711}
   m_Layer: 0
   m_Name: blueL_0
   m_TagString: playerZ
@@ -180,3 +181,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.99, y: 2.224095}
   m_EdgeRadius: 0
+--- !u!114 &3093812378485668711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6248981524535878345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a00631a028d5b404b913d277d8c56bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

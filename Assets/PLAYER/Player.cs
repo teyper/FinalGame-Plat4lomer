@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
     }
 
     // Handle projectile collisions
-    private void OnTriggerEnter2D(Collider2D other)
+   /* private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("shooter") || other.CompareTag("crow"))
         {
@@ -126,7 +126,7 @@ public class Player : MonoBehaviour
             gMan.UpdateHealth(other.CompareTag("shooter") ? -5 : -10); // Lose health
             Destroy(other.gameObject); // Destroy the projectile
         }
-    }
+    }*/
 
     // Constrain player position within the specified bounds
     void ClampPosition()

@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LaserPrefab: {fileID: 6440577492884042629, guid: 58995ffb34f39435594440337d63be0d, type: 3}
+  shooterParticleEffect: {fileID: 4533806908322800154, guid: ecdf7f31ad0ea4201b76d8d0036c42ec, type: 3}
   FireRate: 1
 --- !u!61 &7019296123045067773
 BoxCollider2D:
