@@ -159,6 +159,7 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   GOmessageText: {fileID: 0}
   MCmessageText: {fileID: 0}
+  timerText: {fileID: 0}
   audioSource: {fileID: 0}
   missionCompleteSound: {fileID: 0}
   gameOverSound: {fileID: 0}
@@ -466,14 +467,14 @@ RectTransform:
   m_GameObject: {fileID: 914979905}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.39, y: 1.39, z: 1.39}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 209160031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 38, y: -58}
+  m_AnchoredPosition: {x: 38, y: -92}
   m_SizeDelta: {x: 295.4116, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &914979907
@@ -865,14 +866,14 @@ RectTransform:
   m_GameObject: {fileID: 1704315751}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.76, y: 1.76, z: 1.76}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 209160031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7, y: -8}
+  m_AnchoredPosition: {x: 16, y: -8}
   m_SizeDelta: {x: 295.4116, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1704315753
