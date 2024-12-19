@@ -31,7 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.94, y: 17.74, z: 0}
   m_LocalScale: {x: 6371, y: 6371, z: 6371}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -122,6 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laserPrefab: {fileID: 6440577492884042629, guid: 58995ffb34f39435594440337d63be0d, type: 3}
   fireRate: 2
+  laserSpeed: 5
   shooterParticleEffect: {fileID: 4533806908322800154, guid: ecdf7f31ad0ea4201b76d8d0036c42ec, type: 3}
   destructionSound: {fileID: 8300000, guid: af5b72e046e6f4a00955f47bb6ee6d27, type: 3}
 --- !u!61 &7019296123045067773

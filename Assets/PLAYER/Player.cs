@@ -12,8 +12,9 @@ public class Player : MonoBehaviour
     [Header("Bounds Settings")]
     [SerializeField] float Xmin = -8f;
     [SerializeField] float Xmax = 8f;
-    [SerializeField] float Ymin = -125f;
+    [SerializeField] float Ymin = -125f; // Lower boundary of the platform
     [SerializeField] float Ymax = 35f;
+    [SerializeField] float gameOverYThreshold = -122f; // Trigger Game Over if player's y-position goes below this
 
     [Header("Attack Settings")]
     [SerializeField] GameObject bsPrefab;
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
         HandleMovement();
         HandleAttack();
         ClampPosition();
+        CheckGameOverYPosition(); // Check if the player falls below the threshold
     }
 
     void HandleMovement()
@@ -137,4 +139,20 @@ public class Player : MonoBehaviour
         float clampedY = Mathf.Clamp(transform.position.y, Ymin, Ymax);
         transform.position = new Vector3(clampedX, clampedY, transform.position.z);
     }
+
+    void CheckGameOverYPosition()
+    {
+        if (transform.position.y < gameOverYThreshold)
+        {
+            Debug.Log("Player fell below the platform. Triggering Game Over...");
+
+            // Trigger Game Over and set score to 0
+            if (gMan != null)
+            {
+                gMan.playerScore = 0; // Reset the score
+                gMan.TriggerGameOver();
+            }
+        }
+    }
 }
+
