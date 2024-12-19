@@ -13,6 +13,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1029664485163945190, guid: db8ac7e59303c47eca16f3a8b702f5a1, type: 3}
+      propertyPath: stopAction
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029664485163945190, guid: db8ac7e59303c47eca16f3a8b702f5a1, type: 3}
       propertyPath: moveWithTransform
       value: 1
       objectReference: {fileID: 0}
@@ -20,9 +24,21 @@ PrefabInstance:
       propertyPath: InitialModule.startLifetime.scalar
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1029664485163945190, guid: db8ac7e59303c47eca16f3a8b702f5a1, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029664485163945190, guid: db8ac7e59303c47eca16f3a8b702f5a1, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029664485163945190, guid: db8ac7e59303c47eca16f3a8b702f5a1, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6429750409453174548, guid: db8ac7e59303c47eca16f3a8b702f5a1, type: 3}
       propertyPath: m_Name
-      value: Particle System
+      value: shooterPS
       objectReference: {fileID: 0}
     - target: {fileID: 7166395547749654532, guid: db8ac7e59303c47eca16f3a8b702f5a1, type: 3}
       propertyPath: m_LocalPosition.x

@@ -8,9 +8,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1029664485163945190, guid: db8ac7e59303c47eca16f3a8b702f5a1, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.8679245
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029664485163945190, guid: db8ac7e59303c47eca16f3a8b702f5a1, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.8027609
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029664485163945190, guid: db8ac7e59303c47eca16f3a8b702f5a1, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.65913135
+      objectReference: {fileID: 0}
     - target: {fileID: 6429750409453174548, guid: db8ac7e59303c47eca16f3a8b702f5a1, type: 3}
       propertyPath: m_Name
-      value: Particle System Variant
+      value: poopPS
       objectReference: {fileID: 0}
     - target: {fileID: 7166395547749654532, guid: db8ac7e59303c47eca16f3a8b702f5a1, type: 3}
       propertyPath: m_LocalPosition.x
