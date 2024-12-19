@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
 
     public void MissionComplete()
     {
-        if (missionComplete) return;
+        if (missionComplete ) return;
 
         missionComplete = true;
 
