@@ -124,9 +124,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FallingObjectPrefab: {fileID: 994934292326007165, guid: d26abd8eb8905488c8979ce9a0b5b42a, type: 3}
   crowParticleEffect: {fileID: 6429750409453174548, guid: db8ac7e59303c47eca16f3a8b702f5a1, type: 3}
+  destructionSound: {fileID: 8300000, guid: af5b72e046e6f4a00955f47bb6ee6d27, type: 3}
   DropInterval: 2
-  explosionAudio: {fileID: 8300000, guid: af5b72e046e6f4a00955f47bb6ee6d27, type: 3}
-  audioSource: {fileID: 194531868261892737}
 --- !u!50 &7916386498901744914
 Rigidbody2D:
   serializedVersion: 4

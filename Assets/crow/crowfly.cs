@@ -1,60 +1,70 @@
 using UnityEngine;
 
-using UnityEngine;
-
 public class crowfly : MonoBehaviour
 {
-    [SerializeField] GameObject FallingObjectPrefab; // Falling object prefab
-    [SerializeField] GameObject crowParticleEffect;  // Particle effect prefab
-    [SerializeField] float DropInterval = 1f;        // Interval for dropping objects
-    [SerializeField] AudioClip explosionAudio;       // Explosion sound clip
-    [SerializeField] AudioSource audioSource;        // AudioSource to play sounds
+    [SerializeField] GameObject FallingObjectPrefab;  // The white ball prefab
+    [SerializeField] GameObject crowParticleEffect;   // Particle effect prefab
+    [SerializeField] AudioClip destructionSound;      // Sound effect for crow destruction
+    [SerializeField] float DropInterval = 2f;         // Time between white ball drops
 
-    GameManager gMan;
+    private GameManager gMan;
 
     void Start()
     {
         gMan = FindObjectOfType<GameManager>();
+        if (gMan == null)
+        {
+            Debug.LogError("GameManager not found in the scene!");
+        }
+
         InvokeRepeating("DropFallingObject", 0f, DropInterval);
     }
 
     void DropFallingObject()
     {
-        Instantiate(FallingObjectPrefab, transform.position + Vector3.down * 0.5f, Quaternion.identity);
+        // Instantiate the white ball prefab below the crow
+        if (FallingObjectPrefab != null)
+        {
+            Instantiate(FallingObjectPrefab, transform.position + Vector3.down * 0.5f, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogWarning("FallingObjectPrefab not assigned!");
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("playerZ") || other.CompareTag("Player")) // Hit by Player's attack
+        if (other.CompareTag("playerZ")) // Hit by Player's attack
         {
             gMan.AddScore(200); // Add score to player's total
 
-            // Play explosion sound
-            if (audioSource != null && explosionAudio != null)
+            // Spawn particle effect
+            if (crowParticleEffect != null)
             {
-                audioSource.PlayOneShot(explosionAudio);
+                Instantiate(crowParticleEffect, transform.position, Quaternion.identity);
             }
 
-            // Spawn particle effect
-            Instantiate(crowParticleEffect, transform.position, Quaternion.identity);
+            // Play destruction sound
+            if (destructionSound != null)
+            {
+                PlaySound(destructionSound);
+            }
 
-            Destroy(gameObject); // Destroy the crow
-            Destroy(other.gameObject); // Destroy player's attack
+            Destroy(gameObject);         // Destroy the crow
+            Destroy(other.gameObject);   // Destroy player's attack
         }
     }
 
-
-
-
-
-// Handle collision with the player
-void OnCollisionEnter2D(Collision2D collision)
+    private void PlaySound(AudioClip clip)
     {
-        if (collision.gameObject.CompareTag("Player")) // Crow collides with player
-        {
-            gMan.UpdateHealth(-10); // Deduct 10 health
-            //Instantiate(crowParticleEffect, transform.position, Quaternion.identity); // Spawn particle effect
-            //Destroy(gameObject); // Destroy crow
-        }
+        // Create a temporary GameObject to play the sound
+        GameObject tempAudio = new GameObject("TempAudio");
+        AudioSource tempAudioSource = tempAudio.AddComponent<AudioSource>();
+        tempAudioSource.clip = clip;
+        tempAudioSource.Play();
+
+        // Destroy the temporary GameObject after the clip duration
+        Destroy(tempAudio, clip.length);
     }
 }

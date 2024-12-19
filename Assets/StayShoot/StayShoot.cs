@@ -1,67 +1,90 @@
 using UnityEngine;
 
-public class StayShoot : MonoBehaviour
+public class Shooter : MonoBehaviour
 {
-    [SerializeField] GameObject LaserPrefab;            // Prefab for the laser
-    [SerializeField] GameObject shooterParticleEffect;  // Particle effect prefab
-    [SerializeField] float FireRate = 1f;               // Rate at which lasers are fired
-    [SerializeField] AudioSource audioSource;           // AudioSource for playing sounds
-    [SerializeField] AudioClip explosionAudio;          // Explosion sound clip
+    [Header("Projectile Settings")]
+    [SerializeField] GameObject laserPrefab;           // Laser bullet prefab
+    [SerializeField] float fireRate = 2f;              // Time between shots
+    [SerializeField] float laserSpeed = 5f;           // Speed of the laser
 
-    GameManager gMan;
+    [Header("Destruction Settings")]
+    [SerializeField] GameObject shooterParticleEffect; // Particle effect prefab
+    [SerializeField] AudioClip destructionSound;       // Sound effect for shooter destruction
+
+    private GameManager gMan;
 
     void Start()
     {
         gMan = FindObjectOfType<GameManager>();
-        if (gMan == null) Debug.LogError("GameManager not found!");
+        if (gMan == null)
+        {
+            Debug.LogError("GameManager not found in the scene!");
+        }
 
-        InvokeRepeating("InstantiateLaser", 0f, FireRate);
+        // Start firing lasers at intervals
+        InvokeRepeating("FireLaser", 0f, fireRate);
     }
 
-    void InstantiateLaser()
+    void FireLaser()
     {
-        Vector3 laserPosition = transform.position + new Vector3(0f, -0.5f, 0f);
-        GameObject laser = Instantiate(LaserPrefab, laserPosition, Quaternion.identity);
-        Destroy(laser, 3f);
+        if (laserPrefab != null)
+        {
+            Vector3 spawnPosition = transform.position + new Vector3(0f, -0.5f, 0f); // Adjust spawn position
+            GameObject laser = Instantiate(laserPrefab, spawnPosition, Quaternion.identity);
+
+            // Add movement to the laser
+            Rigidbody2D laserRb = laser.GetComponent<Rigidbody2D>();
+            if (laserRb != null)
+            {
+                laserRb.velocity = Vector2.down * laserSpeed; // Move laser downward
+            }
+            else
+            {
+                Debug.LogWarning("Laser prefab is missing Rigidbody2D component!");
+            }
+
+            // Destroy laser after 3 seconds
+            Destroy(laser, 3f);
+        }
+        else
+        {
+            Debug.LogWarning("Laser prefab is not assigned!");
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("playerZ")) // Hit by Player's attack
         {
-            if (gMan != null)
-            {
-                gMan.AddScore(500); // Add score
-            }
-
-            // Play explosion sound
-            if (audioSource != null && explosionAudio != null)
-            {
-                audioSource.PlayOneShot(explosionAudio);
-            }
+            gMan.AddScore(500); // Add score to player's total
 
             // Spawn particle effect
-            Instantiate(shooterParticleEffect, transform.position, Quaternion.identity);
+            if (shooterParticleEffect != null)
+            {
+                Instantiate(shooterParticleEffect, transform.position, Quaternion.identity);
+            }
 
-            Destroy(gameObject); // Destroy shooter
-            Destroy(other.gameObject); // Destroy player's attack
+            // Play destruction sound
+            if (destructionSound != null)
+            {
+                PlaySound(destructionSound);
+            }
+
+            Destroy(gameObject);         // Destroy the shooter
+            Destroy(other.gameObject);   // Destroy player's attack
         }
     }
 
-
-
-
-
-void OnCollisionEnter2D(Collision2D collision)
+    private void PlaySound(AudioClip clip)
     {
-        if (collision.gameObject.CompareTag("Player")) // Collides with Player
-        {
-            if (gMan != null)
-            {
-                gMan.UpdateHealth(-10); // Deduct health
-            }
-            //Instantiate(shooterParticleEffect, transform.position, Quaternion.identity); // Spawn particle effect
-            //Destroy(gameObject); // Destroy shooter
-        }
+        // Create a temporary GameObject to play the sound
+        GameObject tempAudio = new GameObject("TempAudio");
+        AudioSource tempAudioSource = tempAudio.AddComponent<AudioSource>();
+        tempAudioSource.clip = clip;
+        tempAudioSource.Play();
+
+        // Destroy the temporary GameObject after the clip duration
+        Destroy(tempAudio, clip.length);
     }
 }
+
